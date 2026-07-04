@@ -6,6 +6,9 @@
 # We make no guarantees that this code is fit for any purpose.
 # Visit https://pragprog.com/titles/rails8 for more book information.
 #---
+
+
+## the treatement of putting this in the concerns directory allows us to share common code.
 module CurrentCart
   private
 
