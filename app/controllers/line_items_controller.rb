@@ -55,9 +55,17 @@ class LineItemsController < ApplicationController
   def destroy
     @line_item.destroy!
 
-    respond_to do |format|
-      format.html { redirect_to line_items_path, notice: "Line item was successfully destroyed.", status: :see_other }
-      format.json { head :no_content }
+    if @line_item.cart_id == session[:cart_id]
+      respond_to do |format|
+        format.html { redirect_to Cart.find(@line_item.cart_id), notice: "Line item was successfully destroyed.", status: :see_other }
+        format.json { head :no_content }
+      end
+    else
+
+      respond_to do |format|
+        format.html { redirect_to line_items_path, notice: "Line item was successfully destroyed.", status: :see_other }
+        format.json { head :no_content }
+      end
     end
   end
 
@@ -71,4 +79,5 @@ class LineItemsController < ApplicationController
     def line_item_params
       params.expect(line_item: [ :product_id ])
     end
+
 end
