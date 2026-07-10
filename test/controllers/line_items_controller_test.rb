@@ -23,7 +23,9 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
     follow_redirect!
 
     assert_select "h2", "Your PRAGMATIC Cart"
-    assert_select "li", "1 \u00D7 The Pragmatic Programmer"
+    assert_select "td:nth-child(1)", "1"
+    assert_select "td:nth-child(2)", "\u00D7"
+    assert_select "td:nth-child(3)", "The Pragmatic Programmer"
     #assert_redirected_to line_item_url(LineItem.last)
   end
 
