@@ -2,21 +2,7 @@
   <h2 class="font-bold text-lg mb-3">Your PRAGMATIC Cart</h2>
 
   <table class="table-auto">
-    <% cart.line_items.each do |line_item| %>
-      <tr>
-        <td class="text-right"><%= line_item.quantity %></td>
-        <td>&times;</td>
-        <td class="pr-2">
-          <%= line_item.product.title %>
-        </td>
-        <td class="text-right font-bold">
-          <%= number_to_currency(line_item.total_price) %>
-        </td>
-        <td class="text-right font-bold">
-        <%= button_to "Delete Line", line_item, method: :delete, class: "w-full sm:w-auto rounded-md px-2 py-1.5 text-white bg-red-600 hover:bg-red-500 font-medium cursor-pointer", data: { turbo_confirm: "Are you sure?" } %>
-        </td>
-      </tr>
-    <% end %>
+    <%= render cart.line_items %>
 
     <tfoot>
       <tr>
