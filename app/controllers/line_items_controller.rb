@@ -57,7 +57,7 @@ class LineItemsController < ApplicationController
 
     if @line_item.cart_id == session[:cart_id]
       respond_to do |format|
-        format.html { redirect_to store_index_url }
+        format.html { redirect_to store_index_url, status: :see_other }
         format.json { head :no_content }
       end
     else
