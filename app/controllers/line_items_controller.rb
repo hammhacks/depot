@@ -29,8 +29,8 @@ class LineItemsController < ApplicationController
     respond_to do |format|
       if @line_item.save
         format.turbo_stream
-        format.html {redirect_to store_index_url }
-        format.json {render :show, status: :created, location: @line_item }
+        format.html { redirect_to store_index_url }
+        format.json { render :show, status: :created, location: @line_item }
         session[:counter]=0
       else
         format.html { render :new, status: :unprocessable_content }
@@ -80,5 +80,4 @@ class LineItemsController < ApplicationController
     def line_item_params
       params.expect(line_item: [ :product_id ])
     end
-
 end
