@@ -4,5 +4,6 @@
     <%= line_item.quantity %> &times;
     <%= line_item.product.title%>
     <%= number_to_currency line_item.unit_price %>
+    <%= button_to 'Delete Line!', line_item, method: :delete, class: 'ml-4 rounded-lg py-2.5 px-3.5 text-white bg-red-600' %>
   </div>
 </div>
