@@ -27,7 +27,17 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
     assert_select "td:nth-child(2)", "The Pragmatic Programmer"
     assert_select "td:nth-child(3)", "$39.99"
 
-    #assert_redirected_to line_item_url(LineItem.last)
+    # assert_redirected_to line_item_url(LineItem.last)
+  end
+
+  test "should create line_item via turbo-stream" do
+    assert_difference("LineItem.count") do
+      post line_items_url, params: { product_id: products(:pragprog).id },
+      as: :turbo_stream
+    end
+
+    assert_response :success
+    assert_match (/<tr class="line-item-highlight">/), @response.body
   end
 
   test "should show line_item" do
