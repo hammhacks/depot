@@ -74,6 +74,13 @@ class LineItemsController < ApplicationController
     end
   end
 
+  def increment
+    @line_item = LineItem.find(params[:id])
+    @line_item.increment!(:quantity)
+
+    redirect_to store_index_url
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_line_item

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   # config/routes.rb
   resources :line_items do
     patch :decrement, on: :member
+    patch :increment, on: :member
   end
 
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)

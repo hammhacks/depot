@@ -10,6 +10,11 @@
         form_class: 'inline',
         class: 'ml-4 rounded-lg py-1 px-2 text-white bg-red-600' %>
   </td>
+  <td>
+    <%= button_to 'Increment', increment_line_item_path(line_item), method: :patch,
+        form_class: 'inline',
+        class: 'ml-4 rounded-lg py-1 px-2 text-white bg-green-600' %>
+  </td>
     <td>
     <%= button_to 'Decrement', decrement_line_item_path(line_item), method: :patch,
         form_class: 'inline',
