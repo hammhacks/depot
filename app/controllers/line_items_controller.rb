@@ -56,17 +56,9 @@ class LineItemsController < ApplicationController
   def destroy
     @line_item.destroy!
 
-    if @line_item.cart_id == session[:cart_id]
-      respond_to do |format|
-        format.html { redirect_to store_index_url, status: :see_other }
-        format.json { head :no_content }
-      end
-    else
-
-      respond_to do |format|
-        format.html { redirect_to line_items_path, notice: "Line item was successfully destroyed.", status: :see_other }
-        format.json { head :no_content }
-      end
+    respond_to do |format|
+      format.html { redirect_to store_index_url, status: :see_other, notice: "Line item was successfully destroyed." }
+      format.json { head :no_content }
     end
   end
 
