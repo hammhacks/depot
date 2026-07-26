@@ -52,6 +52,18 @@ class LineItemsController < ApplicationController
     end
   end
 
+  def decrement
+    @line_item = LineItem.find(params[:id])
+
+    if @line_item.quantity > 1
+      @line_item.decrement!(:quantity)
+    else
+      @line_item.destroy
+    end
+
+    redirect_to store_index_url
+  end
+
   # DELETE /line_items/1 or /line_items/1.json
   def destroy
     @line_item.destroy!
