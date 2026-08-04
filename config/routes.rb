@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :questions
+  get "questions"
   resources :orders
   resources :line_items
   resources :carts
