@@ -12,7 +12,7 @@ class AnswersController < ApplicationController
 
   # GET /answers/new
   def new
-    @answer = Answer.new
+    @answer = Answer.new(question_id: params[:question_id]) # #MUST BE SEEDED! D-OH!!
   end
 
   # GET /answers/1/edit
@@ -65,6 +65,8 @@ class AnswersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def answer_params
-      params.expect(answer: [ :response ])
+      params.expect(answer: [ :response, :question_id ])
+      # or classic style:
+      # params.require(:answer).permit(:response, :question_id)
     end
 end
