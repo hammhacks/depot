@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :articles
+  get "news/articles"
   resources :answers
   resources :questions
   # get "questions"
